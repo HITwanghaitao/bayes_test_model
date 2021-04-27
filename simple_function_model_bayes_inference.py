@@ -9,6 +9,7 @@ from scipy import stats
 import matplotlib as mpl
 import scipy.io as io
 import pandas as pd
+import time
 
 #设置print输出全部显示
 np.set_printoptions(threshold=np.inf)
