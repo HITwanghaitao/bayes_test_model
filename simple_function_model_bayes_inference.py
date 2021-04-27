@@ -120,10 +120,10 @@ print("Posterior distributions after " + str(len(traces)) + " iterations.")
 
 #将贝叶斯推断结果输出为txt与mat文件
 flag = 0
+main_path = os.getcwd() + '\\' + 'Time' + getTimeStr() + '_function_model_bayes_inference' #生成文件夹路径
+os.makedirs(main_path) # 生成文件夹
 for param in ["Lgrad", "vc", "h", "m", "rou"]:
     # 以下生成文件，存放在文件夹'Time' + getTimeStr()内，如 Time2021_04_28_06_31_00_function_model_bayes_inference
-    main_path = os.getcwd() + '\\' + 'Time' + getTimeStr() + '_function_model_bayes_inference' #生成文件夹路径
-    os.makedirs(main_path) # 生成文件夹
     mat_path0 = main_path + '\\' + param + '_bayes_analysis.mat'  # 参数param的后验分布分析数据mat文件路径，文件名如 'Lgrad_bayes_analysis.mat’
     mat_path1 = main_path + '\\' + param + '_posteriori.mat'  # 参数param的后验分布mat文件路径，文件名如 'Lgrad_posteriori.mat'
 
