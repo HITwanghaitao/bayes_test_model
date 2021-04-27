@@ -1,5 +1,6 @@
 ## 重要 贝叶斯推断
 # 采用函数式模型（简易模型）进行贝叶斯推断
+# Lgrad*x1*10 + vc*x2 + h*x3*100 + m*x4*100 + 4*rou*x5 + 3
 import pymc3 as pm 
 import numpy as np
 import arviz as az
