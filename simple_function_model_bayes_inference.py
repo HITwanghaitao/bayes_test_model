@@ -10,6 +10,7 @@ import matplotlib as mpl
 import scipy.io as io
 import pandas as pd
 import time
+import os
 
 #设置print输出全部显示
 np.set_printoptions(threshold=np.inf)
@@ -120,9 +121,14 @@ print("Posterior distributions after " + str(len(traces)) + " iterations.")
 flag = 0
 for param in ["Lgrad", "vc", "h", "m", "rou"]:
     # 以下生成文件，存放在文件夹'Time' + getTimeStr()内，如 Time2021_04_28_06_31_00_function_model_bayes_inference
-    mat_path0 = 'Time' + getTimeStr() + '_function_model_bayes_inference' + '\\' + param + '_bayes_analysis.mat' #参数param的后验分布分析数据mat文件路径，文件名如 'Lgrad_bayes_analysis.mat’
-    mat_path1 = 'Time' + getTimeStr() + '_function_model_bayes_inference' + '\\' + param + '_posterior.mat' #参数param的后验分布mat文件路径，文件名如 'Lgrad_posteriori.mat'
-    az_summary = open('Time' + getTimeStr() + '_function_model_bayes_inference' + '\\' + param + '_posterior_az_summary.txt', 'w+')  # 写入贝叶斯推断产生数据的分析结果文本文件
+    main_path = os.getcwd() + '\\' + 'Time' + getTimeStr() + '_function_model_bayes_inference' #生成文件夹路径
+    os.makedirs(main_path) # 生成文件夹
+    mat_path0 = main_path + '\\' + param + '_bayes_analysis.mat'  # 参数param的后验分布分析数据mat文件路径，文件名如 'Lgrad_bayes_analysis.mat’
+    mat_path1 = main_path + '\\' + param + '_posteriori.mat'  # 参数param的后验分布mat文件路径，文件名如 'Lgrad_posteriori.mat'
+
+    az_summary = open(
+        main_path + '\\' + param + '_posteriori_az_summary.txt',
+        'w+')  # 写入贝叶斯推断产生数据的分析结果文本文件
     
     x4_100 = np.zeros((4,100)) #用于存储"Lgrad", "vc", "h", "m", "rou"的后验分布的横坐标数据 x
     y4_100 = np.zeros((4,100)) #用于存储"Lgrad", "vc", "h", "m", "rou"的后验分布的纵坐标数据 y
